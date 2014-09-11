@@ -1,0 +1,66 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+.container {
+  margin: 0;
+}
+
+#settings_container {
+  display: none;
+  background: Moccasin;
+}
+
+#clock_container {
+  position: relative;
+}
+
+#local {
+  text-align: right;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#time {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: 2em;
+}
+
+#date {
+  text-decoration: underline;
+  text-align: center;
+}
+
+#tbl-container {
+}
+
+#tbl {
+  width: 100%;
+}
+
+.tzname {
+  text-align: right;
+  font-size: 100%;
+  vertical-align: bottom;
+  color: lightgray;
+}
+
+.tztime {
+  vertical-align: bottom;
+}
+
+#options-link-div {
+  text-align: right;
+}
+
+#options-link-div a {
+    color: black;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}

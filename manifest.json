@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "TZ Clock",
+  "description": "Shows time in several time zones of your choice.",
+  "version": "0.9",
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "icons": { "16": "icons/icon16.png",
+             "48": "icons/icon48.png",
+            "128": "icons/icon128.png" },
+
+  "permissions": [
+    "storage"
+  ]
+}
