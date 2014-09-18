@@ -3,5 +3,6 @@
     "devel": true,
     "globalstrict": true,
     "undef": true,
+    "indent": 2,
     "globals": {"chrome": true}
 }

@@ -1,5 +1,4 @@
 ## TODO
-* Start the clock right away on options page
 * CSS for settings page
 * Handle bad zones in UI
 * Fix location of the gear icon (margin on the right)

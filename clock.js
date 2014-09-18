@@ -31,12 +31,12 @@ function getDateString(d) {
 
 // Load stored string with time zones.
 function load_settings(cb) {
-    // Use ['UTC'] as default.
-    chrome.storage.sync.get({
-        zonelist: defaults.zonelist
-    }, function(items) {
-        cb(items.zonelist);
-    });
+  // Use ['UTC'] as default.
+  chrome.storage.sync.get({
+    zonelist: defaults.zonelist
+  }, function(items) {
+    cb(items.zonelist);
+  });
 }
 
 // Parse a single time zone string like
@@ -103,6 +103,3 @@ function initUI(zones) {
   tbl.appendChild(tbody);
   window.setInterval(updateClocks, 100);
 }
-
-
-
