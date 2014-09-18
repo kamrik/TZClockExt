@@ -1,23 +1,36 @@
-var defaults = {}
+'use strict';
+
+var defaults = {};
 defaults.locale = 'en-GB';
-defaults.zonelist = 'Europe/London:LON, America/New_York:NY, America/Los_Angeles:LA';
+defaults.zonelist = 'Europe/London:LON\nAmerica/New_York:NY\nAmerica/Los_Angeles:LA';
 
-
-var zones;
-
+// Debug logging helper
+function mylog(msg) {
+  console.error('DEBUG: ' + String(msg));
+}
 
 function getTimeString(d, timeZone, locale) {
   // As of this writing, this won't work in other browsers, the timeZone
   // parameter is new, part of ECMA-402 1.0
   // http://www.ecma-international.org/ecma-402/1.0/
   locale = locale || defaults.locale;
-  var opts = { minute: '2-digit', hour: 'numeric'}; //, second: 'numeric' };
+  var opts = { minute: '2-digit', hour: 'numeric', second: 'numeric' };
   if (timeZone) opts.timeZone = timeZone;
   var s = d.toLocaleTimeString(locale, opts);
   return s;
 }
 
-function load_options(cb) {
+// Return the date in browser's local time zone. Without year.
+function getDateString(d) {
+  // The other option is to use d.toLocaleDateString()
+  var localDate = d.toDateString();
+  // Strip the last 4 digits of the year
+  localDate = localDate.substr(0, localDate.length - 4);
+  return localDate;
+}
+
+// Load stored string with time zones.
+function load_settings(cb) {
     // Use ['UTC'] as default.
     chrome.storage.sync.get({
         zonelist: defaults.zonelist
@@ -26,20 +39,27 @@ function load_options(cb) {
     });
 }
 
+// Parse a single time zone string like
+// America/Los_Angeles:LA
+// To an object
+// z = {tz:'America/Los_Angeles', title:'LA'}
+function parseZone(z) {
+  var parts = z.split(':');
+  var zname = parts[0].trim();
+  var zlbl;
+  if (parts[1]) {
+    zlbl = parts[1].trim();
+  } else {
+    zlbl = zname.replace(/.*\//,'').trim().replace('_', ' ');
+  }
+  return {tz: zname, title: zlbl};
+}
+
+// Convert a string with a list of time zones to an array.
 function parseZonelist(zonelist) {
-  console.log('XXXX' + zonelist)
-  zones = zonelist.split(/[,\n\r]+/).map(function(z) {
-    console.log('zone z=' + z)
-    var parts = z.split(':');
-    var zname = parts[0].trim();
-    var zlbl;
-    if (parts[1]) {
-      zlbl = parts[1].trim();
-    } else {
-      zlbl = zname.replace(/.*\//,'').trim().replace('_', ' ');
-    }
-    return {tz: zname, title: zlbl};
-  });
+  var zones = zonelist
+      .split(/[,\n\r]+/)
+      .map(parseZone);
   return zones;
 }
 
@@ -48,7 +68,22 @@ function initUI(zones) {
   var d = new Date();
   var tbl = document.querySelector('#tbl');
   var tbody = document.createElement('tbody');
+  var localTimeElem = document.querySelector('#time');
+  var dateElem = document.querySelector('#date');
 
+  // Handler to be called every 0.1 second or so to make the clock tick.
+  // Defined here because it needs access to a bunch of vars defined in initUI().
+  function updateClocks() {
+    var d = new Date();
+
+    if (dateElem) dateElem.innerText = getDateString(d);
+    if (localTimeElem) localTimeElem.innerText = getTimeString(d);
+
+    zones.forEach(function(z) {
+      z.time = getTimeString(d, z.tz);
+      z.timeCell.innerText = z.time;
+    });
+  }
 
   zones.forEach(function(z) {
     z.time = getTimeString(d, z.tz);
@@ -60,8 +95,14 @@ function initUI(zones) {
     z.nameCell.innerText = z.title;
     z.timeCell.innerText = z.time;
   });
+
   var old_tbody = tbl.tBodies[0];
-  if (old_tbody)
+  if (old_tbody) {
     tbl.removeChild(old_tbody);
-  tbl.appendChild(tbody)
+  }
+  tbl.appendChild(tbody);
+  window.setInterval(updateClocks, 100);
 }
+
+
+
