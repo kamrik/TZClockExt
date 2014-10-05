@@ -63,6 +63,17 @@ function parseZonelist(zonelist) {
   return zones;
 }
 
+function updateOneTZ(z, d) {
+  try {
+    z.time = getTimeString(d, z.tz);
+    z.timeCell.innerText = z.time;
+  } catch (e) {
+    z.timeCell.innerText = 'Unknown TZ';
+    z.timeCell.className = 'bad_tztime';
+    z.isBad = true;
+  }
+}
+
 function initUI(zones) {
   // Init and add HTML table rows for each time zone.
   var d = new Date();
@@ -79,21 +90,19 @@ function initUI(zones) {
     if (dateElem) dateElem.innerText = getDateString(d);
     if (localTimeElem) localTimeElem.innerText = getTimeString(d);
 
-    zones.forEach(function(z) {
-      z.time = getTimeString(d, z.tz);
-      z.timeCell.innerText = z.time;
+    zones.forEach(function (z) {
+      updateOneTZ(z, d)
     });
   }
 
   zones.forEach(function(z) {
-    z.time = getTimeString(d, z.tz);
     var tr = z.tr = tbody.insertRow(-1);
     z.nameCell = tr.insertCell(-1);
     z.timeCell = tr.insertCell(-1);
     z.nameCell.className = 'tzname';
     z.timeCell.className = 'tztime';
     z.nameCell.innerText = z.title;
-    z.timeCell.innerText = z.time;
+    updateOneTZ(z, d);
   });
 
   var old_tbody = tbl.tBodies[0];

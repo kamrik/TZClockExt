@@ -54,6 +54,11 @@ body {
   vertical-align: bottom;
 }
 
+.bad_tztime {
+  vertical-align: bottom;
+  color: red;
+}
+
 #options-link-div {
   text-align: right;
 }
