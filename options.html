@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TZ Clock options</title>
-	<link rel="stylesheet" href="styles.css">
+    <title>TZ Clock options</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<h3> Time zones </h3>
-
-<textarea rows="8" cols="30" name="zonelist" id="zonelist"> </textarea>
-
-<div id="tbl-container">
-  <table id="tbl"></table>
+<div id="text-container">
+    <h3> Time zones </h3>
+    <textarea rows="8" cols="30" name="zonelist" id="zonelist"> </textarea>
+    <button id="save">Save</button>
+    <button id="check">Check</button>
+    <div id="status"></div>
 </div>
 
-<div id="status"></div>
-<button id="save">Save</button>
-<button id="check">Check</button>
+
+<div id="options_clock_container" class="container">
+    <div id="local">
+      <div id="time"></div>
+      <div id="date"></div>
+
+    </div>
+    <div id="tbl-container">
+      <table id="tbl"></table>
+    </div>
+</div>
+
 
 <script src="clock.js"></script>
 <script src="options.js"></script>

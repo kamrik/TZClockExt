@@ -64,3 +64,18 @@ body {
     outline: none;
     text-decoration: none;
 }
+
+#text-container {
+  float:left;
+  min-width: 30%;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+#options_clock_container {
+  float: left;
+}
+
+#zonelist {
+  width: 100%;
+}
