@@ -5,7 +5,7 @@
 // Saves options to chrome.storage
 function save_settings() {
   var zonelist = document.getElementById('zonelist').value;
-  chrome.storage.sync.set({
+  chrome.storage.local.set({
     zonelist: zonelist
   }, function() {
     // Update status to let user know options were saved.

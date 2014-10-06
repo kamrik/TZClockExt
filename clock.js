@@ -35,7 +35,7 @@ function getDateString(d) {
 // Load stored string with time zones.
 function load_settings(cb) {
   // Use ['UTC'] as default.
-  chrome.storage.sync.get({
+  chrome.storage.local.get({
     zonelist: defaults.zonelist
   }, function(items) {
     cb(items.zonelist);
