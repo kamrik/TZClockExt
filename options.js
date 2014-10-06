@@ -23,8 +23,7 @@ function restore_settings() {
   // Use ['UTC'] as default.
   load_settings(function(zonelist) {
     document.getElementById('zonelist').value = zonelist;
-    var zones = parseZonelist(zonelist);
-    initUI(zones);
+    check_list();
   });
 }
 
@@ -34,8 +33,27 @@ function check_list() {
 
   var status = document.getElementById('status');
   initUI(zones);
+  var badZone;
+  for (var i in zones) {
+    var z = zones[i];
+    if (z.isBad) {
+      badZone = z;
+      break;
+    }
+  }
+
+  var saveButton = document.getElementById('save');
+  var status = document.getElementById('status');
+  status.textContent = '';
+  status.className = ''
+  saveButton.disabled = !!badZone;
+  if (badZone) {
+    status.className = 'status-error'
+    status.textContent = badZone.parseError.message;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', restore_settings);
 document.getElementById('save').addEventListener('click', save_settings);
 document.getElementById('check').addEventListener('click', check_list);
+document.getElementById('zonelist').addEventListener('input', check_list);

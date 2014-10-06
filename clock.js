@@ -4,6 +4,9 @@ var defaults = {};
 defaults.locale = 'en-GB';
 defaults.zonelist = 'Europe/London:LON\nAmerica/New_York:NY\nAmerica/Los_Angeles:LA';
 
+// An object to keep some global values and settings.
+var globals = {};
+
 // Debug logging helper
 function mylog(msg) {
   console.error('DEBUG: ' + String(msg));
@@ -52,7 +55,7 @@ function parseZone(z) {
   } else {
     zlbl = zname.replace(/.*\//,'').trim().replace('_', ' ');
   }
-  return {tz: zname, title: zlbl};
+  return {tz: zname, title: zlbl, raw:z};
 }
 
 // Convert a string with a list of time zones to an array.
@@ -68,9 +71,10 @@ function updateOneTZ(z, d) {
     z.time = getTimeString(d, z.tz);
     z.timeCell.innerText = z.time;
   } catch (e) {
-    z.timeCell.innerText = 'Unknown TZ';
+    z.timeCell.innerText = 'Bad TZ';
     z.timeCell.className = 'bad_tztime';
     z.isBad = true;
+    z.parseError = e;
   }
 }
 

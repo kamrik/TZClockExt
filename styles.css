@@ -84,3 +84,7 @@ body {
 #zonelist {
   width: 100%;
 }
+
+.status-error {
+  color: red;
+}
