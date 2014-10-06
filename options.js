@@ -1,6 +1,6 @@
 'use strict';
 
-/*global load_settings, parseZonelist, initUI */
+/*global load_settings, parseZonelist, initUI, globals */
 
 // Saves options to chrome.storage
 function save_settings() {
@@ -29,13 +29,14 @@ function restore_settings() {
 
 function check_list() {
   var zonelist = document.getElementById('zonelist').value;
-  var zones = parseZonelist(zonelist);
+  globals.zones = parseZonelist(zonelist);
+
 
   var status = document.getElementById('status');
-  initUI(zones);
+  initUI();
   var badZone;
-  for (var i in zones) {
-    var z = zones[i];
+  for (var i in globals.zones) {
+    var z = globals.zones[i];
     if (z.isBad) {
       badZone = z;
       break;
@@ -43,12 +44,11 @@ function check_list() {
   }
 
   var saveButton = document.getElementById('save');
-  var status = document.getElementById('status');
   status.textContent = '';
-  status.className = ''
+  status.className = '';
   saveButton.disabled = !!badZone;
   if (badZone) {
-    status.className = 'status-error'
+    status.className = 'status-error';
     status.textContent = badZone.parseError.message;
   }
 }

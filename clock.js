@@ -78,28 +78,34 @@ function updateOneTZ(z, d) {
   }
 }
 
-function initUI(zones) {
+function updateClocks() {
+  var d = new Date();
+  var localTime = getTimeString(d);
+  if (localTime == globals.lastLocalTime) {
+    // Don't update any visuals if time string hasn't changed.
+    return;
+  }
+  globals.lastLocalTime = localTime;
+  var localTimeElem = document.querySelector('#time');
+  var dateElem = document.querySelector('#date');
+  if (localTimeElem) localTimeElem.innerText = localTime;
+  if (dateElem) dateElem.innerText = getDateString(d);
+
+  globals.zones.forEach(function (z) {
+    updateOneTZ(z, d);
+  });
+}
+
+function initUI() {
   // Init and add HTML table rows for each time zone.
   var d = new Date();
   var tbl = document.querySelector('#tbl');
   var tbody = document.createElement('tbody');
-  var localTimeElem = document.querySelector('#time');
-  var dateElem = document.querySelector('#date');
 
   // Handler to be called every 0.1 second or so to make the clock tick.
   // Defined here because it needs access to a bunch of vars defined in initUI().
-  function updateClocks() {
-    var d = new Date();
 
-    if (dateElem) dateElem.innerText = getDateString(d);
-    if (localTimeElem) localTimeElem.innerText = getTimeString(d);
-
-    zones.forEach(function (z) {
-      updateOneTZ(z, d)
-    });
-  }
-
-  zones.forEach(function(z) {
+  globals.zones.forEach(function(z) {
     var tr = z.tr = tbody.insertRow(-1);
     z.nameCell = tr.insertCell(-1);
     z.timeCell = tr.insertCell(-1);
@@ -114,5 +120,7 @@ function initUI(zones) {
     tbl.removeChild(old_tbody);
   }
   tbl.appendChild(tbody);
-  window.setInterval(updateClocks, 100);
+  if (!globals.intervalHandle) {
+    globals.intervalHandle = window.setInterval(updateClocks, 100);
+  }
 }

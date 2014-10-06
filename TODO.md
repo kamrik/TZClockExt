@@ -1,7 +1,6 @@
-##
+## TODO
 * Change the gear icon to wrench, need an icon or font for this. Unicode wrench looks ugly.
 * Fix location of the gear icon (margin on the right)
-* Don't update text when not needed (time in current resolution didn't change).
 * More text for settings page. Link to wikipedia, link to GitHub
 * More CSS for settings page
 

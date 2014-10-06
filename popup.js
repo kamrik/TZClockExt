@@ -3,7 +3,7 @@
 
 'use strict';
 
-/*global load_settings, parseZonelist, initUI */
+/*global load_settings, parseZonelist, initUI, globals */
 
 /*
 var zones =
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', startItUp);
 function startItUp() {
   // load settings and start the rest
   load_settings(function(zonelist) {
-    var zones = parseZonelist(zonelist);
-    initUI(zones);
+    globals.zones = parseZonelist(zonelist);
+    initUI();
   });
 }
 
