@@ -17,7 +17,7 @@ function getTimeString(d, timeZone, locale) {
   // parameter is new, part of ECMA-402 1.0
   // http://www.ecma-international.org/ecma-402/1.0/
   locale = locale || defaults.locale;
-  var opts = { minute: '2-digit', hour: 'numeric', second: 'numeric' };
+  var opts = { minute: '2-digit', hour: 'numeric'} //, second: 'numeric' };
   if (timeZone) opts.timeZone = timeZone;
   var s = d.toLocaleTimeString(locale, opts);
   return s;
@@ -61,6 +61,7 @@ function parseZone(z) {
 // Convert a string with a list of time zones to an array.
 function parseZonelist(zonelist) {
   var zones = zonelist
+      .trim()
       .split(/[,\n\r]+/)
       .map(parseZone);
   return zones;

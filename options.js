@@ -49,11 +49,11 @@ function check_list() {
   saveButton.disabled = !!badZone;
   if (badZone) {
     status.className = 'status-error';
-    status.textContent = badZone.parseError.message;
+    status.textContent = 'Can\'t parse "' + z.raw + '"';
+    status.title = badZone.parseError.message;
   }
 }
 
 document.addEventListener('DOMContentLoaded', restore_settings);
 document.getElementById('save').addEventListener('click', save_settings);
-document.getElementById('check').addEventListener('click', check_list);
 document.getElementById('zonelist').addEventListener('input', check_list);
