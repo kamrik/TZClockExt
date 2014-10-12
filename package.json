@@ -1,0 +1,16 @@
+{
+  "name": "TZClock",
+  "version": "0.0.1",
+  "description": "Simple time zone enabled clock as Chrome extension.",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Mark Koudritsky <kamrik@gmail.com>",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-watch": "latest",
+    "gulp-jshint": "latest",
+    "gulp-sass": "latest",
+    "del": "^0.1.1"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "TZClockExt",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kamrik/TZClockExt",
+  "authors": [
+    "Mark Koudritsky <kamrik@gmail.com>"
+  ],
+  "description": "Time zone clock as Chrome extension",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "~1.11.1"
+  }
+}
