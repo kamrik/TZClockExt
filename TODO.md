@@ -1,5 +1,5 @@
 ## TODO
-* Make date clickable to reset the calendar to today. Remove underscore.
+* Better defaults for timezones.
 * More text for settings page. Link to wikipedia, link to GitHub
 * Better CSS for settings page
 

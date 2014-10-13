@@ -9,16 +9,26 @@
 
 <div id="text-container">
     <h3> Time zones </h3>
-    <textarea rows="8" cols="30" name="zonelist" id="zonelist"> </textarea>
+    <textarea rows="12" cols="30" name="zonelist" id="zonelist"> </textarea>
     <button id="save" disabled="true">Save</button>
     <div id="status"></div>
+
+
+    <ul class="instructions-list">
+        <li><a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank">List of accepted time zones</a></li>
+        <li>Give your own name to a time zone after a colon, e.g. <tt>America/Los_Angeles:LA</tt> </li>
+        <li>Zones are case insensitive</li>
+        <li><a href="">Chrome Web Store</a></li>
+        <li><a href="">Bug reports</a></li>
+    </ul>
+
 </div>
 
 
 <div id="options_clock_container" class="container">
     <div id="local">
       <div id="time"></div>
-      <div id="date"></div>
+      <div id="dateDiv"><a href="#" id="date"></a></div>
       <div id="datepicker"></div>
     </div>
     <div id="tbl-container">
@@ -26,15 +36,7 @@
     </div>
 </div>
 
-<div class="instructions">
-    <ul>
-        <li><a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank">List of accepted time zones</a></li>
-        <li>Give your own name to a time zone after a colon, e.g. <tt>America/Los_Angeles:LA</tt> </li>
-        <li>Zones are case insensitive</li>
-        <li><a href="">Chrome Web Store</a></li>
-        <li><a href="">Bug reports</a></li>
-    </ul>
-</div>
+
 
 <script src="lib/jquery.js"></script>
 <script src="lib/jquery-ui.js"></script>

@@ -1,3 +1,5 @@
+/* global $ */
+
 'use strict';
 
 var defaults = {};
@@ -17,7 +19,7 @@ function getTimeString(d, timeZone, locale) {
   // parameter is new, part of ECMA-402 1.0
   // http://www.ecma-international.org/ecma-402/1.0/
   locale = locale || defaults.locale;
-  var opts = { minute: '2-digit', hour: 'numeric'} //, second: 'numeric' };
+  var opts = { minute: '2-digit', hour: 'numeric'}; //, second: 'numeric' };
   if (timeZone) opts.timeZone = timeZone;
   var s = d.toLocaleTimeString(locale, opts);
   return s;
@@ -92,9 +94,6 @@ function updateClocks() {
   if (localTimeElem) localTimeElem.innerText = localTime;
   if (dateElem) dateElem.innerText = getDateString(d);
 
-  var datePicker = $('#datepicker');
-  datePicker.datepicker({ firstDay: 1 });
-
   globals.zones.forEach(function (z) {
     updateOneTZ(z, d);
   });
@@ -105,9 +104,6 @@ function initUI() {
   var d = new Date();
   var tbl = document.querySelector('#tbl');
   var tbody = document.createElement('tbody');
-
-  // Handler to be called every 0.1 second or so to make the clock tick.
-  // Defined here because it needs access to a bunch of vars defined in initUI().
 
   globals.zones.forEach(function(z) {
     var tr = z.tr = tbody.insertRow(-1);
@@ -124,6 +120,15 @@ function initUI() {
     tbl.removeChild(old_tbody);
   }
   tbl.appendChild(tbody);
+
+  // Set up date picker
+  if (!globals.datePicker) {
+    globals.datePicker = $('#datepicker').datepicker({ firstDay: 1 });
+    $('#date').click(function() {
+      globals.datePicker.datepicker('setDate', new Date());
+    });
+  }
+
   if (!globals.intervalHandle) {
     globals.intervalHandle = window.setInterval(updateClocks, 100);
   }

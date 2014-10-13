@@ -49,7 +49,7 @@ function check_list() {
   saveButton.disabled = !!badZone;
   if (badZone) {
     status.className = 'status-error';
-    status.textContent = 'Can\'t parse "' + z.raw + '"';
+    status.textContent = 'Can\'t parse "' + badZone.raw + '"';
     status.title = badZone.parseError.message;
   }
 }

@@ -10,6 +10,11 @@ body {
   margin: 0;
 }
 
+h3 {
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+
 #settings_container {
   display: none;
   background: Moccasin;
@@ -31,8 +36,8 @@ body {
   text-align: center;
 }
 
-#date {
-  text-decoration: underline;
+#dateDiv {
+  margin-top: 0.3em;
   text-align: center;
 }
 
@@ -64,37 +69,48 @@ body {
   margin-right: 0.2em;
 }
 
-#options-link-div a {
+#options-link-div a, #dateDiv a {
     color: black;
     border: none;
     outline: none;
     text-decoration: none;
 }
 
-#text-container {
-  float:left;
-  max-width: 20em;
-  margin-left: 3em;
-  margin-right: 3em;
-}
-
-#options_clock_container {
+#options_clock_container, #text-container {
   float: left;
+  border: 1px solid #aaaaaa;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  padding: 0.4em;
 }
 
 #zonelist {
-  width: 100%;
+  display: block;
 }
+
+.instructions-list {
+  font-size: 0.8rem;
+  margin-top: 2em;
+  list-style: none;
+  padding: 0;
+}
+
+.instructions-list li:before
+{
+  content: '\2013'; /* U+2013 = &ndash; */
+  margin-left: -1em;
+  margin-right: 0.5em;
+}
+
+.instructions-list li
+{
+  margin-left: 1em;
+}
+
 
 .status-error {
   color: red;
-}
-
-.instructions {
-  font-size: 14px;
-  float:left;
-  max-width: 20rem;
-  margin-top: 3rem;
 }
 
 #datepicker {
@@ -120,3 +136,4 @@ body {
   border: none;
   background: white;
 }
+
