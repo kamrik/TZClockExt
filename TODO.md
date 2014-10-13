@@ -1,7 +1,7 @@
 ## TODO
-* Better defaults for timezones.
-* More text for settings page. Link to wikipedia, link to GitHub
-* Better CSS for settings page
+* Figure out the minimal lib files
+
+
 
 ## Next version
 * Add auto completion/suggestions for zones when typing them in

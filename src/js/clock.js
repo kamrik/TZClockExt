@@ -4,7 +4,7 @@
 
 var defaults = {};
 defaults.locale = 'en-GB';
-defaults.zonelist = 'Europe/London:LON\nAmerica/New_York:NY\nAmerica/Los_Angeles:LA';
+defaults.zonelist = 'Europe/London\nAmerica/New_York:NY\nAmerica/Los_Angeles:LA';
 
 // An object to keep some global values and settings.
 var globals = {};
