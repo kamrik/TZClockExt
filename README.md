@@ -1,6 +1,6 @@
 TZClockExt
 ==========
-Chrome extension to show time in several time zones
+Chrome extension to show time in several time zones. Started as an exercise to practise some Chrome App development.
 
 
 References

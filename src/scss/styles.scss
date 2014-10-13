@@ -20,15 +20,15 @@ body {
 }
 
 #local {
-  text-align: right;
   padding: 0.5em;
   margin-bottom: 0.5em;
 }
 
-#time {
+#time {  /* The large local time */
   margin-left: 0.5em;
   margin-right: 0.5em;
   font-size: 2em;
+  text-align: center;
 }
 
 #date {
@@ -95,4 +95,28 @@ body {
   float:left;
   max-width: 20rem;
   margin-top: 3rem;
+}
+
+#datepicker {
+  margin-top: 1rem;
+  font-size: 0.5rem;
+}
+
+
+/******* jQuery-UI overrides *******/
+.ui-state-highlight {
+  border-color: #d3d3d3 !important;
+  background: #fcefa1 !important;
+}
+
+.ui-datepicker-inline {
+  /*border: none;*/
+  border-radius: 0;
+  border-right: none;
+  border-left: none;
+}
+
+.ui-datepicker-header {
+  border: none;
+  background: white;
 }

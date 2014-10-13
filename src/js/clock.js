@@ -92,6 +92,9 @@ function updateClocks() {
   if (localTimeElem) localTimeElem.innerText = localTime;
   if (dateElem) dateElem.innerText = getDateString(d);
 
+  var datePicker = $('#datepicker');
+  datePicker.datepicker({ firstDay: 1 });
+
   globals.zones.forEach(function (z) {
     updateOneTZ(z, d);
   });
