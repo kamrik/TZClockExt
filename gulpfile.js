@@ -30,7 +30,7 @@ gulp.task('static', function () {
 
 // Just copy the needed file from libs in bower_components.
 gulp.task('lib', function() {
-    gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/jquery-ui/jquery-ui.js'])
+    gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/jquery-ui/jquery-ui.js', './bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
         .pipe(gulp.dest('./dist/lib/'));
 });
 

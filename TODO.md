@@ -1,5 +1,7 @@
 ## TODO
 * Figure out the minimal lib files
+* Set up all the Chrome Web Store account things
+* Script for packing the CRX file
 
 
 
