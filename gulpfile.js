@@ -1,7 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var gulp = require('gulp');
-watch = require('gulp-watch');
+var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 var del = require('del');
 
@@ -32,6 +32,9 @@ gulp.task('static', function () {
 gulp.task('lib', function() {
     gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/jquery-ui/jquery-ui.js', './bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
         .pipe(gulp.dest('./dist/lib/'));
+    // The images for left / fight icons on the calendar.
+    gulp.src(['./bower_components/jquery-ui/themes/smoothness/images/ui-icons_{222222,454545}_256x240.png'])
+        .pipe(gulp.dest('./dist/lib/images/'));
 });
 
 gulp.task('watch', function() {
