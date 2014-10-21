@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
   "name": "TZ Clock",
-  "description": "Calendar and clock showing several time zones",
+  "short_name": "TZ Clock",
+  "description": "Calendar and clock showing multiple time zones",
   "version": "0.0.1",
   "options_page": "options.html",
   "browser_action": {
