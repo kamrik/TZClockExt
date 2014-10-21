@@ -33,7 +33,8 @@ gulp.task('lib', function() {
     gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/jquery-ui/jquery-ui.js', './bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
         .pipe(gulp.dest('./dist/lib/'));
     // The images for left / fight icons on the calendar.
-    gulp.src(['./bower_components/jquery-ui/themes/smoothness/images/ui-icons_{222222,454545}_256x240.png'])
+    var imgsDir = './bower_components/jquery-ui/themes/smoothness/images/';
+    gulp.src([imgsDir + 'ui-icons_{222222,454545}_256x240.png', imgsDir + 'ui-bg_*75*.png'])
         .pipe(gulp.dest('./dist/lib/images/'));
 });
 
