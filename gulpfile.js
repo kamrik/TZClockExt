@@ -49,4 +49,4 @@ gulp.task('watch', function() {
   gulp.watch('./src/**/*.{js,html,png,json}', ['static']);
 });
 
-gulp.task('default', ['static', 'sass'])
+gulp.task('default', ['static', 'lib', 'sass'])
