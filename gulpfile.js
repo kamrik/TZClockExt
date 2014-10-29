@@ -30,7 +30,13 @@ gulp.task('static', function () {
 
 // Just copy the needed file from libs in bower_components.
 gulp.task('lib', function() {
-    gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/jquery-ui/jquery-ui.js', './bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
+    gulp.src([
+        './bower_components/jquery/dist/jquery.js',
+        './bower_components/jquery-ui/ui/core.js',
+        './bower_components/jquery-ui/ui/datepicker.js',
+        './bower_components/jquery-ui/themes/smoothness/jquery-ui.css',
+        './bower_components/fontawesome/fonts/fontawesome-webfont.woff'
+        ])
         .pipe(gulp.dest('./dist/lib/'));
     // The images for left / fight icons on the calendar.
     var imgsDir = './bower_components/jquery-ui/themes/smoothness/images/';
