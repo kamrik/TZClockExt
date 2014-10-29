@@ -1,10 +1,12 @@
 TZClockExt
 ==========
-Chrome extension that shows a calendar and time in several time zones. Started as an exercise to practice some Chrome App development. Uses [jQuery-ui](http://jqueryui.com/) for the calendar widget.
-
+Chrome extension that shows a calendar and time in several time zones. Started as an exercise to practice some Chrome App development.
 
 [TZ Clock on Chrome Web Store](https://chrome.google.com/webstore/detail/tz-clock/bpeaahhicpbbcnhpokblbhfjcnclfpen)
 
+Uses:
+ - [jQuery-ui](http://jqueryui.com/) for the calendar widget.
+ - [FontAwesome icons](http://fortawesome.github.io/Font-Awesome/icons/)
 
 References
 ==========
