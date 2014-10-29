@@ -3,7 +3,7 @@
   "name": "TZ Clock",
   "short_name": "TZ Clock",
   "description": "Calendar and clock showing multiple time zones",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "options_page": "options.html",
   "browser_action": {
     "default_icon": "icons/icon.png",
