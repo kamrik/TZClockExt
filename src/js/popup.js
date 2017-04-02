@@ -5,14 +5,6 @@
 
 /*global load_settings, parseZonelist, initUI, globals */
 
-/*
-var zones =
-   [{tz: 'Asia/Jerusalem', title: 'TLV'}
-   ,{tz: 'Europe/London', title: 'LON'}
-   ,{tz: 'America/Los_Angeles', title: 'MTV'}
-   ];
-*/
-
 document.addEventListener('DOMContentLoaded', startItUp);
 
 function startItUp() {
@@ -22,11 +14,3 @@ function startItUp() {
     initUI();
   });
 }
-
-// function adjustWindowSize() {
-//   // Window size
-//   var tblWidth = tbl.getBoundingClientRect().width;
-//   var winWidth = Math.floor(tblWidth * 1.2);
-//   var winHeight = document.querySelector('body').getBoundingClientRect().height;
-//   appWindow.setBounds({ width: winWidth, height: winHeight});
-// }

@@ -36,7 +36,6 @@ function getDateString(d) {
 
 // Load stored string with time zones.
 function load_settings(cb) {
-  // Use ['UTC'] as default.
   chrome.storage.local.get({
     zonelist: defaults.zonelist
   }, function(items) {
@@ -45,9 +44,9 @@ function load_settings(cb) {
 }
 
 // Parse a single time zone string like
-// America/Los_Angeles:LA
+// America/New_York:NY
 // To an object
-// z = {tz:'America/Los_Angeles', title:'LA'}
+// z = {tz: "America/New_York", title: "NY", raw: "America/New_York:NY"}
 function parseZone(z) {
   var parts = z.split(':');
   var zname = parts[0].trim();

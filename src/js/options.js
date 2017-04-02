@@ -20,7 +20,6 @@ function save_settings() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_settings() {
-  // Use ['UTC'] as default.
   load_settings(function(zonelist) {
     document.getElementById('zonelist').value = zonelist;
     check_list();
@@ -30,7 +29,6 @@ function restore_settings() {
 function check_list() {
   var zonelist = document.getElementById('zonelist').value;
   globals.zones = parseZonelist(zonelist);
-
 
   var status = document.getElementById('status');
   initUI();
