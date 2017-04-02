@@ -36,11 +36,8 @@ function getDateString(d) {
 
 // Load stored string with time zones.
 function load_settings(cb) {
-  chrome.storage.local.get({
-    zonelist: defaults.zonelist
-  }, function(items) {
-    cb(items.zonelist);
-  });
+  var defaults_dcopy = jQuery.extend(true, {}, defaults);
+  chrome.storage.local.get(defaults_dcopy, cb);
 }
 
 // Parse a single time zone string like

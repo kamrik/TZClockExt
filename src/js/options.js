@@ -4,10 +4,10 @@
 
 // Saves options to chrome.storage
 function save_settings() {
-  var zonelist = document.getElementById('zonelist').value;
-  chrome.storage.local.set({
-    zonelist: zonelist
-  }, function() {
+  // Reconstruct the settings from defaults + the state of settings page.
+  var settings = jQuery.extend(true, {}, defaults);
+  settings.zonelist = document.getElementById('zonelist').value;
+  chrome.storage.local.set(settings, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
@@ -20,8 +20,8 @@ function save_settings() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_settings() {
-  load_settings(function(zonelist) {
-    document.getElementById('zonelist').value = zonelist;
+  load_settings(function(settings) {
+    document.getElementById('zonelist').value = settings.zonelist;
     check_list();
   });
 }

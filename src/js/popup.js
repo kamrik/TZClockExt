@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', startItUp);
 
 function startItUp() {
   // load settings and start the rest
-  load_settings(function(zonelist) {
-    globals.zones = parseZonelist(zonelist);
+  load_settings(function(settings) {
+    globals.settings = settings;
+    globals.zones = parseZonelist(settings.zonelist);
     initUI();
   });
 }
