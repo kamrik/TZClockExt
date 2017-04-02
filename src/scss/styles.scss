@@ -31,6 +31,11 @@ body {
   content: "\f013";
 }
 
+.fa-cogs:before {
+  content: "\f085";
+}
+
+
 .fa-globe:before {
   content: "\f0ac";
 }
@@ -95,10 +100,10 @@ h3 {
 }
 
 #options-link-div {
-  font-size: 0.8em;
-  padding: 0.3em;
+  font-size: 0.7em;
   text-align: left;
-  margin-left: 0.2em;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 #options-link-div a, #dateDiv a {
@@ -173,4 +178,3 @@ h3 {
   border: none;
   background: white;
 }
-
