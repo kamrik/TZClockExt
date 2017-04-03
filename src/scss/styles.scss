@@ -87,7 +87,7 @@ h3 {
   text-align: right;
   font-size: 100%;
   vertical-align: bottom;
-  color: lightgray;
+  color: darkgray;
 }
 
 .tztime {
@@ -130,9 +130,17 @@ h3 {
   display: block;
 }
 
+.options-section {
+  font-size: 0.8em;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+.options-section h4 {
+  margin-bottom: 0.5em;
+}
+
 .instructions-list {
-  font-size: 0.8rem;
-  margin-top: 2em;
   list-style: none;
   padding: 0;
 }

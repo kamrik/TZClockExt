@@ -4,10 +4,8 @@
 
 // Saves options to chrome.storage
 function save_settings() {
-  // Reconstruct the settings from defaults + the state of settings page.
-  var settings = jQuery.extend(true, {}, defaults);
-  settings.zonelist = document.getElementById('zonelist').value;
-  chrome.storage.local.set(settings, function() {
+  globals.settings.zonelist = document.getElementById('zonelist').value;
+  chrome.storage.local.set(globals.settings, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Options saved.';
@@ -21,12 +19,14 @@ function save_settings() {
 // stored in chrome.storage.
 function restore_settings() {
   load_settings(function(settings) {
+    globals.settings = settings
     document.getElementById('zonelist').value = settings.zonelist;
-    check_list();
+    document.getElementById('weekday').selectedIndex = settings.week_start_day;
+    update_zones();
   });
 }
 
-function check_list() {
+function update_zones() {
   var zonelist = document.getElementById('zonelist').value;
   globals.zones = parseZonelist(zonelist);
 
@@ -52,6 +52,13 @@ function check_list() {
   }
 }
 
+function update_datepicker() {
+  globals.settings.week_start_day = $('#weekday').val();
+  globals.update_datepicker = true;
+  initUI();
+}
+
 document.addEventListener('DOMContentLoaded', restore_settings);
 document.getElementById('save').addEventListener('click', save_settings);
-document.getElementById('zonelist').addEventListener('input', check_list);
+document.getElementById('zonelist').addEventListener('input', update_zones);
+document.getElementById('weekday').addEventListener('change', update_datepicker);

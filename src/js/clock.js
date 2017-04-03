@@ -5,6 +5,7 @@
 var defaults = {};
 defaults.locale = 'en-GB';
 defaults.zonelist = 'Europe/London\nAmerica/New_York:NY\nAmerica/Los_Angeles:LA';
+defaults.week_start_day = 1; // 0 = 7 = Sunday, 1 = Monday etc.
 
 // An object to keep some global values and settings.
 var globals = {};
@@ -44,16 +45,25 @@ function load_settings(cb) {
 // America/New_York:NY
 // To an object
 // z = {tz: "America/New_York", title: "NY", raw: "America/New_York:NY"}
-function parseZone(z) {
-  var parts = z.split(':');
-  var zname = parts[0].trim();
-  var zlbl;
+function parseZone(zstr) {
+  var z = {raw:zstr}
+  var parts = zstr.split(':');
+
+  // First part is the time zone name as it appears on Oslon DB
+  z.tz = parts[0].trim();
+
+  // Second part (optional) is the display label, like 'NY'
   if (parts[1]) {
-    zlbl = parts[1].trim();
+    z.title = parts[1].trim();
   } else {
-    zlbl = zname.replace(/.*\//,'').trim().replace('_', ' ');
+    z.title = z.tz.replace(/.*\//,'').trim().replace('_', ' ');
   }
-  return {tz: zname, title: zlbl, raw:z};
+
+  // Third part (optional) is display color - any HTML/CSS color.
+  if (parts[2]) {
+    z.color = parts[2].trim();
+  }
+  return z
 }
 
 // Convert a string with a list of time zones to an array.
@@ -106,6 +116,9 @@ function initUI() {
     z.nameCell = tr.insertCell(-1);
     z.timeCell = tr.insertCell(-1);
     z.nameCell.className = 'tzname';
+    if (z.color) {
+      z.nameCell.style.color = z.color;
+    }
     z.timeCell.className = 'tztime';
     z.nameCell.innerText = z.title;
     updateOneTZ(z, d);
@@ -118,8 +131,14 @@ function initUI() {
   tbl.appendChild(tbody);
 
   // Set up date picker
+  if (globals.datePicker && globals.update_datepicker) {
+    $('#datepicker').datepicker('destroy');
+    globals.datePicker = null;
+  }
   if (!globals.datePicker) {
-    globals.datePicker = $('#datepicker').datepicker({ firstDay: 1 });
+    globals.datePicker = $('#datepicker').datepicker({
+      firstDay: globals.settings.week_start_day
+    });
     $('#date').click(function() {
       globals.datePicker.datepicker('setDate', new Date());
     });
