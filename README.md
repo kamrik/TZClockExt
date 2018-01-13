@@ -2,8 +2,8 @@ TZClockExt
 ==========
 Browser extension that shows time in several time zones and a calendar widget. Started as an exercise to practice some Chrome App development.
 
-[Chrome Web Store listing](https://chrome.google.com/webstore/detail/tz-clock/bpeaahhicpbbcnhpokblbhfjcnclfpen)
-[FireFox Add-ons listing](https://addons.mozilla.org/en-US/firefox/addon/tzclock/)
+ - [Chrome Web Store listing](https://chrome.google.com/webstore/detail/tz-clock/bpeaahhicpbbcnhpokblbhfjcnclfpen)
+ - [FireFox Add-ons listing](https://addons.mozilla.org/en-US/firefox/addon/tzclock/)
 
 Uses:
  - [jQuery-ui](http://jqueryui.com/) for the calendar widget.
