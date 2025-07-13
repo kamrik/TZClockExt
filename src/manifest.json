@@ -1,17 +1,17 @@
 {
-  "manifest_version": 2,
-  "name": "TZ Clock",
-  "short_name": "TZ Clock",
+  "manifest_version": 3,
+  "name": "TZ Clock Dev",
+  "short_name": "TZ Clock Dev",
   "description": "Calendar and clock showing multiple time zones",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "options_ui": {
-    "page": "options.html"
+    "page": "options.html",
+    "open_in_tab": true
   },
-  "browser_action": {
+  "action": {
     "default_icon": "icons/icon.png",
     "default_popup": "popup.html"
   },
-
   "icons": { "16": "icons/icon16.png",
              "48": "icons/icon48.png",
             "128": "icons/icon128.png" },

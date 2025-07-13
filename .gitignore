@@ -5,3 +5,5 @@ pics
 bower_components
 lib
 older_versions
+pnpm-lock.yaml
+pnpm-workspace.yaml

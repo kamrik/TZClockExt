@@ -1,16 +1,31 @@
 {
   "name": "TZClock",
-  "version": "0.0.1",
+  "version": "0.1.4",
   "description": "Simple time zone enabled clock as Chrome extension.",
   "scripts": {
-    "test": "gulp test"
+    "clean": "rm -rf dist",
+    "sass": "sass src/scss:dist/css",
+    "copy:static": "cpx 'src/**/*.{js,html,png,json}' dist/",
+    "copy:libs": "npm run copy:lib:jquery && npm run copy:lib:jquery-ui && npm run copy:lib:font-awesome && npm run copy:lib:jquery-ui-images",
+    "copy:lib:jquery": "cpx 'node_modules/jquery/dist/jquery.js' dist/lib/",
+    "copy:lib:jquery-ui": "cpx 'node_modules/jquery-ui/dist/jquery-ui.js' dist/lib/ && cpx 'node_modules/jquery-ui-themes/themes/smoothness/jquery-ui.css' dist/lib/",
+    "copy:lib:font-awesome": "cpx 'node_modules/font-awesome/fonts/fontawesome-webfont.woff' dist/lib/",
+    "copy:lib:jquery-ui-images": "cpx 'node_modules/jquery-ui-themes/themes/smoothness/images/ui-icons_{222222,454545}_256x240.png' dist/lib/images/ && cpx 'node_modules/jquery-ui-themes/themes/smoothness/images/ui-bg_*75*.png' dist/lib/images/",
+    "build": "npm run clean && npm run sass && npm run copy:static && npm run copy:libs",
+    "watch:sass": "sass --watch src/scss:dist/css",
+    "watch:static": "onchange 'src/**/*.{js,html,png,json}' -- npm run copy:static",
+    "watch:libs": "onchange 'node_modules/jquery/dist/jquery.js' 'node_modules/jquery-ui/**/*' 'node_modules/font-awesome/fonts/*' -- npm run copy:libs",
+    "watch": "npm run watch:sass & npm run watch:static & npm run watch:libs",
+    "start": "npm run watch"
   },
   "author": "Mark Koudritsky <kamrik@gmail.com>",
   "devDependencies": {
-    "gulp": "latest",
-    "gulp-watch": "latest",
-    "gulp-jshint": "latest",
-    "gulp-sass": "latest",
-    "del": "^0.1.1"
+    "cpx": "^1.5.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.14.1",
+    "jquery-ui-themes": "^1.12.0",
+    "onchange": "^7.1.0",
+    "sass": "^1.89.2"
   }
 }
